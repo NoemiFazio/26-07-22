@@ -7,6 +7,7 @@ import "./App.css";
 
 function App() {
   const [isRenderedList, setRenderedList] = useState(false);
+  const [filteredList, setFilteredList] = useState("");
 
   return (
     <div className="App">
@@ -19,9 +20,16 @@ function App() {
           isRenderedList={isRenderedList}
           onAddButton={setRenderedList}
         />
+        <input
+          onChange={(event) => setFilteredList(event.target.value)}
+          type="text"
+          placeholder="Search..."
+          className="Search"
+        />
         <MessageCardList
           isRenderedList={isRenderedList}
           setRenderedList={setRenderedList}
+          filteredList={filteredList}
         />
       </div>
     </div>

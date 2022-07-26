@@ -9,6 +9,7 @@ const MessageCardList = ({
   setIsPosted,
   isRenderedList,
   setRenderedList,
+  filteredList,
 }) => {
   const [messageList, setMessageList] = useState([]);
 
@@ -19,18 +20,20 @@ const MessageCardList = ({
   return (
     <div className="MessageCardList">
       {messageList.length ? (
-        messageList.map((message) => (
-          <MessageCard
-            textContent={message}
-            isRenderedList={isRenderedList}
-            deleteFn={() =>
-              DELETE("messages", message.id).then(() =>
-                setRenderedList(!isRenderedList)
-              )
-            }
-            key={message.id}
-          />
-        ))
+        messageList
+          .filter((el) => el.sender.toLowerCase().includes(filteredList))
+          .map((message) => (
+            <MessageCard
+              textContent={message}
+              isRenderedList={isRenderedList}
+              deleteFn={() =>
+                DELETE("messages", message.id).then(() =>
+                  setRenderedList(!isRenderedList)
+                )
+              }
+              key={message.id}
+            />
+          ))
       ) : (
         <p>Loading...</p>
       )}
