@@ -15,7 +15,13 @@ const MessageCard = ({ textContent, isRenderedList, deleteFn }) => {
         <p className="MessageCardinfo--sender">{textContent.sender}</p>
         <p className="MessageCard__info--date">{textContent.date}</p>
       </div>
-      {isVisibile && <Modal deleteFn={deleteFn} setVisibile={setVisibile} />}
+      {isVisibile && (
+        <Modal
+          deleteFn={deleteFn}
+          modalText={"Sei sicuro di voler cancellare il messaggio?"}
+          setVisibile={setVisibile}
+        />
+      )}
     </div>
   );
 };

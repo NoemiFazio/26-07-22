@@ -21,6 +21,7 @@ const MessageCardList = ({
     <div className="MessageCardList">
       {messageList.length ? (
         messageList
+          .reverse()
           .filter((el) => el.sender.toLowerCase().includes(filteredList))
           .map((message) => (
             <MessageCard

@@ -1,13 +1,11 @@
 import "./index.css";
 import Button from "../Button";
 
-const Modal = ({ setVisibile, deleteFn }) => {
+const Modal = ({ setVisibile, deleteFn, modalText }) => {
   return (
     <div className="Modal__overlay">
       <div className="Modal">
-        <p className="Modal__desc">
-          Sei sicuro di voler cancellare il messaggio?
-        </p>
+        <p className="Modal__desc">{modalText}</p>
         <div className="Modal__btns">
           <Button
             onClick={() => {
